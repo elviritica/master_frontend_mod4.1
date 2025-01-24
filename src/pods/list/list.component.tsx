@@ -1,8 +1,6 @@
-import { routes } from "@/router";
 import React from "react";
-import { Link } from "react-router-dom";
-import { MemberEntity } from "./list.vm";
 import { MemberRow } from "./components";
+import { MemberEntity } from "./list.vm";
 
 interface Props {
   members: MemberEntity[];
