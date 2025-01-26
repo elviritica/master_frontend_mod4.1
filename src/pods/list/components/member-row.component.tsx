@@ -1,5 +1,6 @@
 import React from "react";
 import { MemberEntity } from "../list.vm";
+import { Avatar, TableCell, TableRow } from "@mui/material";
 
 interface Props {
   member: MemberEntity;
@@ -7,9 +8,11 @@ interface Props {
 }
 
 export const MemberRow: React.FC<Props> = ({ member, onSelect }) => (
-  <>
-    <img src={member.avatar_url} />
-    <span>{member.id}</span>
-    <div onClick={onSelect}>{member.login}</div>
-  </>
+  <TableRow hover onClick={onSelect} style={{ cursor: "pointer" }}>
+    <TableCell>
+      <Avatar src={member.avatar_url} />
+    </TableCell>
+    <TableCell>{member.id}</TableCell>
+    <TableCell>{member.login}</TableCell>
+  </TableRow>
 );

@@ -1,6 +1,6 @@
 import React from "react";
 import { MemberDetail } from "./detail.vm";
-import { Button } from "@mui/material";
+import { Avatar, Button, Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
 
 interface Props {
   member: MemberDetail;
@@ -11,19 +11,34 @@ export const Detail: React.FC<Props> = ({ member, onReset }) => {
   return (
     <>
       {member ? (
-        <>
-        <Button onClick={onReset}>Back</Button>
-        <br />
-          <img src={member.avatarUrl} />
-          <h3>User Id: {member.id}</h3>
-          <p> id: {member.id}</p>
-          <p> login: {member.login}</p>
-          <p> name: {member.name}</p>
-          <p> company: {member.company}</p>
-          <p> bio: {member.bio}</p>
-        </>
+        <Card>
+          <CardHeader
+            avatar={<Avatar src={member.avatarUrl} />}
+            title={member.name}
+            subheader={`User Id: ${member.id}`}
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              id: {member.id}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              login: {member.login}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              company: {member.company}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              bio: {member.bio}
+            </Typography>
+          </CardContent>
+          <Box display="flex" justifyContent="center" mt={2} mb={2}>
+          <Button variant="contained" color="primary" onClick={onReset}>Back</Button>
+          </Box>
+        </Card>
       ) : (
-        <h1>Member not yet available</h1>
+        <Typography variant="h5" component="h1">
+          Member not yet available
+        </Typography>
       )}
     </>
   );

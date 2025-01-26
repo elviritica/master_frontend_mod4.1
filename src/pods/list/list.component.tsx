@@ -1,6 +1,7 @@
 import React from "react";
 import { MemberRow, Pagination, SearchOrg } from "./components";
 import { MemberEntity } from "./list.vm";
+import { Box, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 interface Props {
   members: MemberEntity[];
@@ -24,39 +25,50 @@ export const List: React.FC<Props> = ({
   onSearch
 }) => {
   if (error) {
-    return <div style={{ color: "red" }}>{error}</div>;
+    return <Typography color="error">{error}</Typography>;
   }
 
   return (
-    <>
-      <div>
+    <Box>
+      <Box mb={2}>
         <SearchOrg onSearch={onSearch}/>
-      </div>
-      <div className="list-user-list-container">
-        <span className="list-header">Avatar</span>
-        <span className="list-header">Id</span>
-        <span className="list-header">Name</span>
-
-        {members ? (
-          members.map((member) => (
-            <MemberRow
-              key={member.id}
-              member={member}
-              onSelect={() => onSelect(member.login)}
-            />
-          ))
-        ) : (
-          <h1>Loading members</h1>
-        )}
-      </div>
-      <div>
+      </Box>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>Avatar</TableCell>
+              <TableCell align="center" sx={{ fontWeight: 'bold' }}>Id</TableCell>
+              <TableCell align="center" sx={{ fontWeight: 'bold' }}>Name</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {members ? (
+              members.map((member) => (
+                <MemberRow
+                  key={member.id}
+                  member={member}
+                  onSelect={() => onSelect(member.login)}
+                />
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={3}>
+                  <Typography variant="h6" align="center">Loading members</Typography>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <Box mt={2}>
         <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onNextPage={onNextPage}
-        onPreviousPage={onPreviousPage}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onNextPage={onNextPage}
+          onPreviousPage={onPreviousPage}
         />
-      </div>
-    </>
+      </Box>
+    </Box>
   );
 };

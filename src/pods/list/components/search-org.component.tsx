@@ -1,6 +1,6 @@
 import React from "react";
 import { MembersContext } from "@/core/providers";
-import { TextField, Button } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 
 interface Props {
   onSearch: () => void;
@@ -25,14 +25,17 @@ export const SearchOrg: React.FC<Props> = ({onSearch}) => {
 
 
   return (
-    <div>
+    <Box display="flex" alignItems="center" gap={2}>
       <TextField
         type="text"
         placeholder="Search organization"
         value={orgName}
         onChange={handleInputChange}
+        fullWidth
       />
-      <Button onClick={handleSearchClick}>search</Button>
-    </div>
+      <Button variant="contained" color="primary" onClick={handleSearchClick}>
+        Search
+      </Button>
+    </Box>
   );
 };

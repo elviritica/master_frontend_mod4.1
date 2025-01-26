@@ -1,11 +1,15 @@
-import React, { PropsWithChildren } from 'react';
+import { Box } from "@mui/material";
+import React, { PropsWithChildren } from "react";
 
-export const CenteredLayout : React.FC<PropsWithChildren> = ({children}) => {
-    return (
-        <>
-            <div className='layout-center'>
-                {children}
-            </div>
-        </>
-    )
-}
+export const CenteredLayout: React.FC<PropsWithChildren> = ({ children }) => {
+  return (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      minHeight="100vh"
+    >
+      {children}
+    </Box>
+  );
+};

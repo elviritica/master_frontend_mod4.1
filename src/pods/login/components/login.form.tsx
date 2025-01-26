@@ -1,6 +1,6 @@
 import React from "react";
 import { FormData } from "../login.vm";
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 
 interface Props {
   onSubmit: (username: string, password: string) => void;
@@ -24,20 +24,26 @@ export const LoginForm: React.FC<Props> = ({ onSubmit }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        label="username"
-        value={formData.username}
-        onChange={handleChange("username")}
-      />
-      <TextField
-        label="password"
-        value={formData.password}
-        type="password"
-        onChange={handleChange("password")}
-      />
-      <br />
-      <br />
-      <Button type="submit">Login</Button>
+      <Box mb={2}>
+        <TextField
+          label="username"
+          value={formData.username}
+          onChange={handleChange("username")}
+          fullWidth
+        />
+      </Box>
+      <Box mb={2}>
+        <TextField
+          label="password"
+          value={formData.password}
+          type="password"
+          onChange={handleChange("password")}
+          fullWidth
+        />
+      </Box>
+      <Button type="submit" variant="contained" color="primary">
+        Login
+      </Button>
     </form>
   );
 };

@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 
 interface Props {
@@ -15,13 +15,18 @@ export const Pagination: React.FC<Props> = ({
   onPreviousPage,
 }) => {
   return (
-    <div>
-      <Button onClick={onPreviousPage} disabled={currentPage === 1}>
-        previous page
+    <Box mt={2} display="flex" justifyContent="center" alignItems="center">
+      <Button variant="contained" color="primary" onClick={onPreviousPage}>
+        Previous Page
       </Button>
-      <Button onClick={onNextPage} disabled={currentPage === totalPages}>
-        next page
+      <Box mx={2}>
+        <Typography variant="body1">
+          Page {currentPage} of {totalPages}
+        </Typography>
+      </Box>
+      <Button variant="contained" color="primary" onClick={onNextPage}>
+        Next Page
       </Button>
-    </div>
+    </Box>
   );
 };
