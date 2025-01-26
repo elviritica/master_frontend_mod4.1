@@ -1,6 +1,6 @@
-import { DetailContainer } from "@/pods/detail";
-import { ListContainer } from "@/pods/list";
 import React from "react";
+import { DetailContainer } from "@/pods/users/detail";
+import { ListContainer } from "@/pods/users/list";
 
 export const ListScene: React.FC = () => {
   const [selected, setSelected] = React.useState<string>("");

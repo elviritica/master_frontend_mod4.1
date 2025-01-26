@@ -18,7 +18,7 @@ export const AppLayout: React.FC<PropsWithChildren> = ({ children }) => {
             sx={{ flexGrow: 1 }}
           >
             <Tab
-              label="List"
+              label="Users"
               component={Link}
               to={routes.list}
               value={routes.list}

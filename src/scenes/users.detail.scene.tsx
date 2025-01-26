@@ -1,5 +1,5 @@
-import { DetailContainer } from "@/pods/detail";
 import React from "react";
+import { DetailContainer } from "@/pods/users/detail";
 import { useParams } from "react-router-dom";
 
 export const DetailScene: React.FC = () => {
