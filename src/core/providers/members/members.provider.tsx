@@ -1,5 +1,6 @@
 import React from "react";
 import { MemberEntity, MembersContextModel } from "./members.vm";
+import { getMembers } from "@/pods/list/api/api";
 
 export const MembersContext = React.createContext<MembersContextModel>(null);
 
@@ -13,13 +14,7 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({
   React.useEffect(() => {
     if (organization) {
       setError("");
-      fetch(`https://api.github.com/orgs/${organization}/members`)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Organization not found");
-          }
-          return response.json();
-        })
+      getMembers(organization)
         .then(setMembers)
         .catch((err) => {
           setError(err.message);

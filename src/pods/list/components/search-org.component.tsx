@@ -2,7 +2,11 @@ import React from "react";
 import { MembersContext } from "@/core/providers";
 import { TextField, Button } from "@mui/material";
 
-export const SearchOrg: React.FC = () => {
+interface Props {
+  onSearch: () => void;
+}
+
+export const SearchOrg: React.FC<Props> = ({onSearch}) => {
   const { organization, setOrganization } = React.useContext(MembersContext);
   const [orgName, setOrgName] = React.useState<string>(organization);
 
@@ -16,7 +20,9 @@ export const SearchOrg: React.FC = () => {
 
   const handleSearchClick = () => {
     setOrganization(orgName);
+    onSearch();
   };
+
 
   return (
     <div>
