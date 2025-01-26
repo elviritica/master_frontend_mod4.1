@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from "react";
 import { ProfileContextModel } from "./profile.vm";
-import { LoginScene } from "@/scenes";
 
 export const ProfileContext = React.createContext<ProfileContextModel>(null);
 

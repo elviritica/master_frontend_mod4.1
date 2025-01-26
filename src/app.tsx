@@ -1,5 +1,5 @@
 import React from "react";
-import { MembersProvider } from "@/core/providers/members/members.context";
+import { MembersProvider } from "@/core/providers/members/members.provider";
 import { AppRouter } from "@/router";
 import { ProfileProvider } from "@/core/providers";
 import { LoginScene } from "@/scenes";

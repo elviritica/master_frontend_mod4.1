@@ -1,2 +1,2 @@
 export * from "./member-row.component";
-export * from "./searchOrg.component";
+export * from "./search-org.component";

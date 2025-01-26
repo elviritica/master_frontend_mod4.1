@@ -1,10 +1,14 @@
+import React from "react";
 import { MembersContext } from "@/core/providers";
 import { TextField, Button } from "@mui/material";
-import React from "react";
 
 export const SearchOrg: React.FC = () => {
-  const { setOrganization } = React.useContext(MembersContext);
-  const [orgName, setOrgName] = React.useState<string>("");
+  const { organization, setOrganization } = React.useContext(MembersContext);
+  const [orgName, setOrgName] = React.useState<string>(organization);
+
+  React.useEffect(() => {
+    setOrgName(organization);
+  }, [organization]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOrgName(e.target.value);

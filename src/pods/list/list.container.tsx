@@ -7,11 +7,11 @@ interface Props {
 }
 
 export const ListContainer: React.FC<Props> = ({onSelectMember}) => {
-  const { members } = React.useContext(MembersContext);
+  const { members, error } = React.useContext(MembersContext);
 
   return (
     <>
-      <List members={members} onSelect={onSelectMember} />
+      <List members={members} onSelect={onSelectMember} error={error} />
     </>
   );
 };

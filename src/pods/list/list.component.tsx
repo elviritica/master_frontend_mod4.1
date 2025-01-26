@@ -5,9 +5,14 @@ import { MemberEntity } from "./list.vm";
 interface Props {
   members: MemberEntity[];
   onSelect: (id: string) => void;
+  error: string;
 }
 
-export const List: React.FC<Props> = ({ members, onSelect }) => {
+export const List: React.FC<Props> = ({ members, onSelect, error }) => {
+  if (error) {
+    return <div style={{ color: "red" }}>{error}</div>;
+  }
+  
   return (
     <div className="list-user-list-container">
       <span className="list-header">Avatar</span>
