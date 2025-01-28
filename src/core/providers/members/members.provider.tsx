@@ -1,6 +1,6 @@
 import React from "react";
-import { MemberEntity, MembersContextModel } from "./members.vm";
 import { getMembers } from "@/pods/users/list/api/api";
+import { MemberEntity, MembersContextModel } from "./members.vm";
 
 export const MembersContext = React.createContext<MembersContextModel>(null);
 

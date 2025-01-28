@@ -1,5 +1,8 @@
+import { ListContainer } from "@/pods/rickandmorty/list/list.container";
 import React from "react";
 
 export const RickAndMortyScene: React.FC = () => {
-  return <div>Rick and Morty Scene</div>;
+    const [selected, setSelected] = React.useState<string>("");
+  
+  return <ListContainer onSelectMember={setSelected}/>;
 };

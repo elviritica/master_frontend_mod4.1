@@ -1,11 +1,15 @@
 import { CharacterEntity } from "../list.vm";
 
-export const getCharacters = (): Promise<CharacterEntity[]> => {
-  return fetch(`https://rickandmortyapi.com/api/character`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Character not found");
-      }
-      return response.json();
-    });
+export const getCharacters = async (): Promise<CharacterEntity[]> => {
+  try {
+    const response = await fetch("https://rickandmortyapi.com/api/character");
+    if (!response.ok) {
+      throw new Error("Failed to fetch characters");
+    }
+    const data = await response.json();
+    return data.results || [];
+  } catch (error) {
+    console.error("Error fetching characters:", error);
+    return [];
+  }
 };
