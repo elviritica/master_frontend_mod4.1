@@ -9,6 +9,7 @@ export const CharactersProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const [characters, setCharacters] = React.useState<CharacterEntity[]>([]);
+  const [searchCharacter, setSearchCharacter] = React.useState<string>("");
   const [error, setError] = React.useState<string>("");
 
   React.useEffect(() => {
@@ -22,7 +23,7 @@ export const CharactersProvider: React.FC<React.PropsWithChildren> = ({
   }, []);
 
   return (
-    <CharactersContext.Provider value={{ characters, setCharacters, error }}>
+    <CharactersContext.Provider value={{ characters, setCharacters, error, searchCharacter, setSearchCharacter }}>
       {children}
     </CharactersContext.Provider>
   );

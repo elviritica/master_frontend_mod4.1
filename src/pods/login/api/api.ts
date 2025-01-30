@@ -5,7 +5,7 @@ export const login = (
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        username === "admin" && password === "test"
+        username === "" && password === ""
           ? { username: "admin" }
           : null
       );

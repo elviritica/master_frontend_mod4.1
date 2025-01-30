@@ -1,5 +1,6 @@
 import React from "react";
-import { MemberRow, Pagination, SearchOrg } from "./components";
+import { MemberRow } from "./components";
+import { Pagination } from "@/common/components";
 import { MemberEntity } from "./list.vm";
 import { Box, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
@@ -30,9 +31,6 @@ export const List: React.FC<Props> = ({
 
   return (
     <Box>
-      <Box mb={2}>
-        <SearchOrg onSearch={onSearch}/>
-      </Box>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

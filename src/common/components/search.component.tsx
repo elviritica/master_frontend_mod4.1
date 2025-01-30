@@ -3,23 +3,26 @@ import { MembersContext } from "@/core/providers";
 import { Box, Button, TextField } from "@mui/material";
 
 interface Props {
+  searchTerm: string;
+  setSearchTerm: (searchTerm: string) => void;
   onSearch: () => void;
+  placeholder: string;
 }
 
-export const SearchOrg: React.FC<Props> = ({onSearch}) => {
-  const { organization, setOrganization } = React.useContext(MembersContext);
-  const [orgName, setOrgName] = React.useState<string>(organization);
+export const Search: React.FC<Props> = ({searchTerm, setSearchTerm, onSearch, placeholder}) => {
+
+  const [input, setInput] = React.useState(searchTerm);
 
   React.useEffect(() => {
-    setOrgName(organization);
-  }, [organization]);
+    setInput(searchTerm);
+  }, [searchTerm]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOrgName(e.target.value);
+    setInput(e.target.value);
   };
 
   const handleSearchClick = () => {
-    setOrganization(orgName);
+    setSearchTerm(input);
     onSearch();
   };
 
@@ -28,8 +31,8 @@ export const SearchOrg: React.FC<Props> = ({onSearch}) => {
     <Box display="flex" alignItems="center" gap={2}>
       <TextField
         type="text"
-        placeholder="Search organization"
-        value={orgName}
+        placeholder={placeholder}
+        value={input}
         onChange={handleInputChange}
         fullWidth
       />

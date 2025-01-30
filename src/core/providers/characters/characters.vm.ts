@@ -7,5 +7,7 @@ export interface CharacterEntity {
 export interface CharactersContextModel {
   characters: CharacterEntity[];
   setCharacters: (characters: CharacterEntity[]) => void;
+  searchCharacter: string;
+  setSearchCharacter: (searchCharacter: string) => void;
   error: string;
 }

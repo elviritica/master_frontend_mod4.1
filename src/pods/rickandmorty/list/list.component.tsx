@@ -40,7 +40,6 @@ export const List: React.FC<Props> = ({
   }
   return (
     <Box>
-      <Box mb={2}></Box>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
