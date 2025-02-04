@@ -8,11 +8,11 @@ interface Props {
 }
 
 export const MemberRow: React.FC<Props> = ({ member, onSelect }) => (
-  <TableRow hover onClick={onSelect} style={{ cursor: "pointer" }}>
+  <TableRow hover style={{ cursor: "pointer" }}>
     <TableCell>
       <Avatar src={member.avatar_url} />
     </TableCell>
     <TableCell>{member.id}</TableCell>
-    <TableCell>{member.login}</TableCell>
+    <TableCell onClick={onSelect}>{member.login}</TableCell>
   </TableRow>
 );

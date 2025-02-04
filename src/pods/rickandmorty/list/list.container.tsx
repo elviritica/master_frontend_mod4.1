@@ -6,10 +6,10 @@ import { Box } from "@mui/material";
 import { Search } from "@/common/components";
 
 interface Props {
-  onSelectMember: (id: string) => void;
+  onSelectCharacter: (id: string) => void;
 }
 
-export const ListContainer: React.FC<Props> = ({ onSelectMember }) => {
+export const ListContainer: React.FC<Props> = ({ onSelectCharacter }) => {
   const { characters, error, searchCharacter, setSearchCharacter } =
     React.useContext(CharactersContext);
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -34,12 +34,13 @@ export const ListContainer: React.FC<Props> = ({ onSelectMember }) => {
     setCurrentPage(1);
   };
 
+
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchCharacter.toLowerCase())
   );
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const selectedMembers = characters
+  const selectedCharacters = characters
     ? filteredCharacters.slice(startIndex, startIndex + itemsPerPage)
     : [];
 
@@ -52,7 +53,7 @@ export const ListContainer: React.FC<Props> = ({ onSelectMember }) => {
 
   return (
     <>
-      <Box mb={2}>
+      <Box display="flex" flexDirection="column" gap={2}>
         <Search
           searchTerm={searchCharacter}
           setSearchTerm={debouncedSetSearchTerm}
@@ -61,8 +62,8 @@ export const ListContainer: React.FC<Props> = ({ onSelectMember }) => {
         />
       </Box>
       <List
-        characters={selectedMembers}
-        onSelect={onSelectMember}
+        characters={selectedCharacters}
+        onSelect={onSelectCharacter}
         error={error}
         onNextPage={handleNextPage}
         onPreviousPage={handlePreviousPage}

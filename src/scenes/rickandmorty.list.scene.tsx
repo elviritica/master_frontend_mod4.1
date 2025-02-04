@@ -1,8 +1,20 @@
-import { ListContainer } from "@/pods/rickandmorty/list/list.container";
 import React from "react";
+import { ListContainer } from "@/pods/rickandmorty/list";
+import { routes, switchRoutes } from "@/router/routes";
+import { useNavigate } from "react-router-dom";
 
 export const RickAndMortyScene: React.FC = () => {
-    const [selected, setSelected] = React.useState<string>("");
-  
-  return <ListContainer onSelectMember={setSelected}/>;
+  const navigate = useNavigate();
+
+
+  return (
+    <>
+      <br />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+      <ListContainer onSelectCharacter={(id) => {
+        navigate(routes.ramDetail(Number(id)));
+      }} />
+      </div>
+    </>
+  );
 };

@@ -1,21 +1,20 @@
 import React from "react";
-import { DetailContainer } from "@/pods/users/detail";
 import { ListContainer } from "@/pods/users/list";
+import { useNavigate } from "react-router-dom";
+import { routes } from "@/router";
 
 export const ListScene: React.FC = () => {
-  const [selected, setSelected] = React.useState<string>("");
+  const navigate = useNavigate();
   return (
     <>
 
 <br />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        {!selected ? (
-          <ListContainer onSelectMember={setSelected} />
-        ) : (
-          <div>
-            <DetailContainer id={selected} onReset={() => setSelected(null)} />
-          </div>
-        )}
+        
+          <ListContainer onSelectMember={(id) => {
+            navigate(routes.detail(id));
+          }} />
+        
       </div>
     </>
   );
