@@ -34,7 +34,6 @@ export const ListContainer: React.FC<Props> = ({ onSelectCharacter }) => {
     setCurrentPage(1);
   };
 
-
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchCharacter.toLowerCase())
   );
@@ -60,19 +59,19 @@ export const ListContainer: React.FC<Props> = ({ onSelectCharacter }) => {
           onSearch={handleSearch}
           placeholder="Search characters"
         />
+        <List
+          characters={selectedCharacters}
+          onSelect={onSelectCharacter}
+          error={error}
+          onNextPage={handleNextPage}
+          onPreviousPage={handlePreviousPage}
+          currentPage={currentPage}
+          totalPages={
+            characters ? Math.ceil(filteredCharacters.length / itemsPerPage) : 0
+          }
+          onSearch={handleSearch}
+        />
       </Box>
-      <List
-        characters={selectedCharacters}
-        onSelect={onSelectCharacter}
-        error={error}
-        onNextPage={handleNextPage}
-        onPreviousPage={handlePreviousPage}
-        currentPage={currentPage}
-        totalPages={
-          characters ? Math.ceil(filteredCharacters.length / itemsPerPage) : 0
-        }
-        onSearch={handleSearch}
-      />
     </>
   );
 };

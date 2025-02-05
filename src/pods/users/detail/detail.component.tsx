@@ -9,7 +9,7 @@ interface Props {
 
 export const Detail: React.FC<Props> = ({ member, onReset }) => {
   return (
-    <>
+    <Box display="flex" justifyContent="center">
       {member ? (
         <Card>
           <CardHeader
@@ -40,6 +40,6 @@ export const Detail: React.FC<Props> = ({ member, onReset }) => {
           Member not yet available
         </Typography>
       )}
-    </>
+    </Box>
   );
 };

@@ -9,7 +9,7 @@ interface Props {
 
 export const Detail: React.FC<Props> = ({ character, onReset }) => {
   return (
-    <>
+    <Box display="flex" justifyContent="center">
       {character ? (
         <Card>
           <CardHeader
@@ -42,6 +42,6 @@ export const Detail: React.FC<Props> = ({ character, onReset }) => {
           Character not yet available
         </Typography>
       )}
-    </>
+    </Box>
   );
 };
