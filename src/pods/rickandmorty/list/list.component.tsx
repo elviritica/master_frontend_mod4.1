@@ -16,7 +16,7 @@ import { CharacterEntity } from "./list.vm";
 
 interface Props {
   characters: CharacterEntity[];
-  onSelect: (id: string) => void;
+  onSelect: (id: number) => void;
   error: string;
   onNextPage: () => void;
   onPreviousPage: () => void;
@@ -61,7 +61,7 @@ export const List: React.FC<Props> = ({
                 <CharacterRow
                   key={member.id}
                   character={member}
-                  onSelect={() => onSelect(member.name)}
+                  onSelect={() => onSelect(member.id)}
                 />
               ))
             ) : (

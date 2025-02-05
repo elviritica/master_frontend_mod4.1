@@ -6,7 +6,7 @@ export const RickAndMortyDetailScene: React.FC = () => {
   const { id } = useParams();
   return (
     <>
-      <DetailContainer id={id} onReset={() => {}} />
+      <DetailContainer id={Number(id)} onReset={() => {}} />
     </>
   );
 };

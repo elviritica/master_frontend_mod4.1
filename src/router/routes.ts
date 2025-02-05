@@ -24,5 +24,5 @@ interface Routes extends Omit<SwitchRoutes, "detail" | "ramDetail"> {
 export const routes: Routes = {
   ...switchRoutes,
   detail: (login: string) => generatePath(switchRoutes.detail, { id: login }),
-  ramDetail: (id: number) => generatePath(switchRoutes.ramDetail, { id: id.toString() }),
+  ramDetail: (id: number | string) => generatePath(switchRoutes.ramDetail, { id: Number(id) }),
 };

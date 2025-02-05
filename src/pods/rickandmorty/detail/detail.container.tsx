@@ -5,7 +5,7 @@ import { mapDetailToVM } from "./detail.mappers";
 import { CharacterDetail } from "./detail.vm";
 
 interface Props {
-  id: string;
+  id: number;
   onReset: () => void;
 }
 

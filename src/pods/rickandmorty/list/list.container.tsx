@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 import { Search } from "@/common/components";
 
 interface Props {
-  onSelectCharacter: (id: string) => void;
+  onSelectCharacter: (id: number) => void;
 }
 
 export const ListContainer: React.FC<Props> = ({ onSelectCharacter }) => {
