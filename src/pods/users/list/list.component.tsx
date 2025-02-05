@@ -1,8 +1,19 @@
 import React from "react";
 import { MemberRow } from "./components";
-import { Pagination } from "@/common/components";
+import { GenericTable, Pagination } from "@/common/components";
 import { MemberEntity } from "./list.vm";
-import { Box, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Avatar,
+} from "@mui/material";
 
 interface Props {
   members: MemberEntity[];
@@ -23,42 +34,37 @@ export const List: React.FC<Props> = ({
   onPreviousPage,
   currentPage,
   totalPages,
-  onSearch
+  onSearch,
 }) => {
-  if (error) {
-    return <Typography color="error">{error}</Typography>;
-  }
+  const columns = [
+    { id: "avatar", label: "Avatar" },
+    { id: "id", label: "Id" },
+    { id: "name", label: "Name" },
+  ];
+
+  const renderRow = (member: MemberEntity) => (
+    <TableRow
+      hover
+      onClick={() => onSelect(member.login)}
+      style={{ cursor: "pointer" }}
+      key={member.id}
+    >
+      <TableCell align="center">
+        <Avatar src={member.avatar_url} />
+      </TableCell>
+      <TableCell align="center">{member.id}</TableCell>
+      <TableCell align="center">{member.login}</TableCell>
+    </TableRow>
+  );
 
   return (
     <Box>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-            <TableCell align="center" sx={{ fontWeight: 'bold' }}>Avatar</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 'bold' }}>Id</TableCell>
-              <TableCell align="center" sx={{ fontWeight: 'bold' }}>Name</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {members ? (
-              members.map((member) => (
-                <MemberRow
-                  key={member.id}
-                  member={member}
-                  onSelect={() => onSelect(member.login)}
-                />
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={3}>
-                  <Typography variant="h6" align="center">Loading members</Typography>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <GenericTable
+        columns={columns}
+        data={members}
+        renderRow={renderRow}
+        error={error}
+      />
       <Box mt={2}>
         <Pagination
           currentPage={currentPage}
