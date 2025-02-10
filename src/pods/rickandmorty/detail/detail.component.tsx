@@ -1,6 +1,7 @@
 import React from "react";
-import { CharacterDetail} from "./detail.vm";
-import { Avatar, Button, Box, Card, CardContent, CardHeader, Typography } from "@mui/material";
+import { GenericDetail } from "@/common/components";
+import { Avatar, Box, Typography } from "@mui/material";
+import { CharacterDetail } from "./detail.vm";
 
 interface Props {
   character: CharacterDetail;
@@ -8,40 +9,32 @@ interface Props {
 }
 
 export const Detail: React.FC<Props> = ({ character, onReset }) => {
-  return (
-    <Box display="flex" justifyContent="center">
-      {character ? (
-        <Card>
-          <CardHeader
-            avatar={<Avatar src={character.image} />}
-            title={character.name}
-          />
-          <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-              name: {character.name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              status: {character.status}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              species: {character.species}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              type: {character.type}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              gender: {character.gender}
-            </Typography>
-          </CardContent>
-          <Box display="flex" justifyContent="center" mt={2} mb={2}>
-          <Button variant="contained" color="primary" onClick={onReset}>Back</Button>
-          </Box>
-        </Card>
-      ) : (
+  if (!character) {
+    return (
+      <Box display="flex" justifyContent="center">
         <Typography variant="h5" component="h1">
           Character not yet available
         </Typography>
-      )}
+      </Box>
+    );
+  }
+
+  const fields = [
+    {
+      id: "avatar",
+      label: "Avatar",
+      value: <Avatar src={character.image} alt={character.name} />,
+    },
+    { id: "id", label: "ID", value: character.id },
+    { id: "name", label: "Name", value: character.name },
+    { id: "status", label: "Status", value: character.status },
+    { id: "species", label: "Species", value: character.species },
+    { id: "type", label: "Type", value: character.type },
+    { id: "gender", label: "Gender", value: character.gender },
+  ];
+  return (
+    <Box display="flex" justifyContent="center">
+      <GenericDetail fields={fields} onReset={onReset} />
     </Box>
   );
 };
