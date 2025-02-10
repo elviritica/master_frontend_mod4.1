@@ -3,7 +3,6 @@
 ## Project Description
 React Web application to filter and visualize GitHub organization members with additional features.
 
-
 ## Functionalities
 - Input for organization name
 - Default search of Lemoncode members
@@ -15,6 +14,11 @@ React Web application to filter and visualize GitHub organization members with a
   * Character search with useDebounce
   * Character list display
   * Character detail view
+
+##### Login
+
+user: admin
+password: test
 
 ## Technologies Used
 - React

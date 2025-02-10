@@ -8,8 +8,8 @@ interface Props {
 
 export const LoginForm: React.FC<Props> = ({ onSubmit }) => {
   const [formData, setFormData] = React.useState<FormData>({
-    username: "",
-    password: "",
+    username: "admin",
+    password: "test",
   });
 
   const handleChange =
