@@ -1,19 +1,12 @@
 import React from "react";
-import { MemberRow } from "./components";
+import {
+  Avatar,
+  Box,
+  TableCell,
+  TableRow
+} from "@mui/material";
 import { GenericTable, Pagination } from "@/common/components";
 import { MemberEntity } from "./list.vm";
-import {
-  Box,
-  Typography,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Avatar,
-} from "@mui/material";
 
 interface Props {
   members: MemberEntity[];

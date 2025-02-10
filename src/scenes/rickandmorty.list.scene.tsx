@@ -1,6 +1,6 @@
 import React from "react";
 import { ListContainer } from "@/pods/rickandmorty/list";
-import { routes, switchRoutes } from "@/router/routes";
+import { routes } from "@/router/routes";
 import { useNavigate } from "react-router-dom";
 
 export const RickAndMortyScene: React.FC = () => {

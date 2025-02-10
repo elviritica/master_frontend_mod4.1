@@ -1,15 +1,11 @@
 import React from "react";
-import { MemberDetail } from "./detail.vm";
 import {
   Avatar,
-  Button,
   Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Typography,
+  Typography
 } from "@mui/material";
 import { GenericDetail } from "@/common/components";
+import { MemberDetail } from "./detail.vm";
 
 interface Props {
   member: MemberDetail;
